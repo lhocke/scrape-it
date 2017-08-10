@@ -1,9 +1,10 @@
 var express = require('express');
-var exphbs = reuire('express-handlebars');
+var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
+var logger = require('morgan')
 
 var Note = require('./models/note.js');
 var Article = require('./models/article.js');
@@ -85,4 +86,6 @@ app.post("/articles/:id", function(req, res) {
     });
 });
 
-app.listen()
+app.listen(3000, function(){
+    console.log("App listening on 3000")
+})
