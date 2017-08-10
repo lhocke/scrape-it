@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var request = require('request');
 var cheerio = require('cheerio');
 var bodyParser = require('body-parser');
-var logger = require('morgan')
+var logger = require('morgan');
 
 var Note = require('./models/note.js');
 var Article = require('./models/article.js');
@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 mongoose.connect('http://localhost/scrape-it');
+
+var PORT = 3000 || process.env.PORT;
 
 var db = mongoose.connection;
 
@@ -46,11 +48,11 @@ app.get("/scrape", function(req, res) {
                 else {
                     console.log(doc)
                 }
-            })
-        })
+            });
+        });
     }
     res.send("Scrape Complete")
-})
+});
 
 app.get("/articles", function(req, res) {
     Article.find({}, function(error, doc) {
@@ -66,9 +68,9 @@ app.get("/articles/:id", function(req, res) {
         if (error) throw error;
         else {
             res.send(doc)
-        }
-    })
-})
+        };
+    });
+});
 
 app.post("/articles/:id", function(req, res) {
     var newNote = req.body;
@@ -86,6 +88,6 @@ app.post("/articles/:id", function(req, res) {
     });
 });
 
-app.listen(3000, function(){
-    console.log("App listening on 3000")
-})
+app.listen(PORT, function(){
+    console.log("App listening on: ", PORT)
+});
