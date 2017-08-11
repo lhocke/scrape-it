@@ -2,7 +2,11 @@
     padding-top: 15px;
 }
 
-.navbar, .navbar-inverse{
+.navbar {
     color: white;
     background: #0c7cd5;
+}
+
+#brand, #links {
+    color: white;
 }

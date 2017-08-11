@@ -61,10 +61,11 @@ router.get("/", function(req, res) {
 });
 
 router.get("/scrape", function(req, res) {
-    request("http://bbc.co.uk/news"), function(error, response, html) {
+    request("http://bbc.com/news"), function(error, response, html) {
         var $ = cheerio.load(html);
         $("gel-layout__item").each(function(i, element) {
             var result = {};
+            console.log(element)
             result.title = $(this).children("h3").text();
             result.link = $(this).children("a").attr("href");
             result.text = $(this).children("p").first().text();
