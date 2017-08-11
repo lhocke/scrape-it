@@ -1,5 +1,35 @@
-$.getJSON("/articles", function(data) {
-    for (var i =0; i < data.length; i++) {
-        $(".articles").append("<div> class='panel panel-default' data-id='" + data[i]._id + "'>" + "<div class='panel-heading><a href='" data[i].link + "'><h3>" + data[i].title + "</h3></a></div><div class='panel-body'><p>" + data[i].body);
-    }
+$(document).ready(function(){
+
+  $(".button-collapse").sideNav();
+
+  // $('.add-comment-button').on('click', function(){   
+  //   var articleId = $(this).data("id");
+  //   var baseURL = window.location.origin;
+  //   var frmName = "form-add-" + articleId;
+  //   var frm = $('#' + frmName);
+
+  //   $.ajax({
+  //     url: baseURL + '/add/comment/' + articleId,
+  //     type: 'POST',
+  //     data: frm.serialize(),
+  //   })
+  //   .done(function() {
+  //     location.reload();
+  //   });
+  //   return false;
+  // });
+
+  // $('.delete-comment-button').on('click', function(){
+  //   var commentId = $(this).data("id");
+  //   var baseURL = window.location.origin;
+
+  //   $.ajax({
+  //     url: baseURL + '/remove/comment/' + commentId,
+  //     type: 'POST',
+  //   })
+  //   .done(function() {
+  //     location.reload();
+  //   });
+  //   return false;
+  // });
 });

@@ -1,16 +1,21 @@
 var express = require("express");
+var router = express.Router();
 var path = require("path");
+var request = require("request");
+var cheerio = require("cheerio");
 
-var router = express.Router()
+var Note = require("../models/Note.js");
+var Article = require("../models/Article.js")
 
 router.get("/", function(req, res) {
-    console.log("request")
     Article.find({}, function(error, doc) {
         if (error) throw error;
         else {
-            res.render("index", doc)
+            var hbsObject= {articles: doc}
+            res.render("index", hbsObject);
         };
-    })
+    });
+    // console.log("request")
 });
 
 router.get("/scrape", function(req, res) {

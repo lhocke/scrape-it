@@ -11,7 +11,7 @@
                 <a href="/saved">Saved Articles</a>
             </li>
             <li>
-                <a class="btn btn-danger new-scrape">FRESH SCRAPE</a>
+                <a href="/scrape" class="btn btn-danger new-scrape">FRESH SCRAPE</a>
             </li>
         </ul>
     </div>
@@ -26,4 +26,14 @@
     </div>
 </div>
 
-<div class="container-fluid article-container articles"></div>
+<div class="container-fluid article-container articles">
+{{#each articles}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href={{link}}><h3>{{title}}</a><a class="btn btn-success save">Save Article</a></h3>
+        </div>
+        <div class="panel-body">
+            {{body}}
+        </div>
+    </div>
+</div>
